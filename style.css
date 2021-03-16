@@ -24,7 +24,7 @@ body {
 button {
     cursor: pointer;
     border-radius: 50%;
-    border: 1px solid white;
+    border: 2px solid white;
     margin: 4px;
     outline: none;
     background: black;
@@ -52,4 +52,26 @@ button:hover {
     padding: 10px;
     word-wrap: break-word;
     word-break: break-all;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.operand {
+    font-size: 30px;
+    border-color: orange;
+    color: orange;
+}
+
+.operand:hover {
+    background: #fae8cf;
+}
+
+.equal {
+    background: orange;
+}
+
+.equal:hover {
+    background: #fae8cf;
+    color: orange;
+    border: 2px solid orange;
 }
