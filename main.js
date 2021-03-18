@@ -1,10 +1,10 @@
-const numbers = document.querySelectorAll(".number")
-const operators = document.querySelectorAll(".operator")
-const clearBtn = document.querySelector(".clear")
-const allClearBtn = document.querySelector(".all-clear")
-const equals = document.querySelector(".equals")
-const previousText = document.querySelector(".previous")
-const currentText = document.querySelector(".current")
+const numbers = document.querySelectorAll('.number')
+const operators = document.querySelectorAll('.operator')
+const clearBtn = document.querySelector('.clear')
+const allClearBtn = document.querySelector('.all-clear')
+const equals = document.querySelector('.equals')
+const previousText = document.querySelector('.previous')
+const currentText = document.querySelector('.current')
 
 function add(a, b) {
     return a + b;
@@ -30,16 +30,16 @@ function operate(operator, a, b) {
     a = Number(a)
     b = Number(b)
     switch (operator) {
-        case "+":
+        case '+':
             return add(a, b);
             break;
-        case "-":
+        case '-':
             return subtract(a, b);
             break;
-        case "x":
+        case 'x':
             return multiply(a, b);
             break;
-        case "÷":
+        case '÷':
             return divide(a, b);
             break;
     }
@@ -70,19 +70,19 @@ function display() {
 }
 
 numbers.forEach((number) => {
-    number.addEventListener("click", () => {
+    number.addEventListener('click', () => {
         appendNumber(number.textContent)
     })
 })
 
 operators.forEach((operator) => {
-    operator.addEventListener("click", () => {
+    operator.addEventListener('click', () => {
         chooseOperator(operator.textContent)
     })
 })
 
-clearBtn.addEventListener("click", clear)
+clearBtn.addEventListener('click', clear)
 
-allClearBtn.addEventListener("click", allClear)
+allClearBtn.addEventListener('click', allClear)
 
-equals.addEventListener("click", evaluate)
+equals.addEventListener('click', evaluate)
