@@ -50,6 +50,7 @@ function operate(operator, a, b) {
             break;
     }
 }
+
 function appendNumber(number) {
 
 }
