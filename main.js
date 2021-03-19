@@ -5,6 +5,12 @@ const allClearBtn = document.querySelector('.all-clear')
 const equals = document.querySelector('.equals')
 const previousText = document.querySelector('.previous')
 const currentText = document.querySelector('.current')
+const result = document.querySelector('.display')
+
+let firstOperand = ""
+let secondOperand = ""
+let currentOperator = null
+let clearDisplay = false
 
 function add(a, b) {
     return a + b;
@@ -19,11 +25,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if (b !== 0) {
-        return a / b;
-    } else {
-        return "Error";
-    }
+    return a / b;
 }
 
 function operate(operator, a, b) {
@@ -40,16 +42,19 @@ function operate(operator, a, b) {
             return multiply(a, b);
             break;
         case '÷':
-            return divide(a, b);
+            if (b === 0) {
+                return "Error";
+            } else {
+                return divide(a, b);
+            }
             break;
     }
 }
-
-function appendNumber() {
+function appendNumber(number) {
 
 }
 
-function chooseOperator() {
+function chooseOperator(operator) {
 
 }
 
