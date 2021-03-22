@@ -38,11 +38,7 @@ function operate(operator, a, b) {
         case 'x':
             return multiply(a, b);
         case '÷':
-            if (b === 0) {
-                return "Error";
-            } else {
-                return divide(a, b);
-            }
+            return divide(a, b);
     }
 }
 
@@ -95,23 +91,25 @@ function evaluate() {
         return;
     }
     secondOperand = display.textContent;
-    display.textContent = roundResult(operate(currentOperator, firstOperand, secondOperand));
+    display.textContent = roundAnswer(operate(currentOperator, firstOperand, secondOperand));
     currentOperator = null;
 }
 
-function roundResult(number) {
-    return Math.round(number * 1000) / 1000;
+function roundAnswer(number) {
+    return Math.round(number * 100) / 100;
 }
 
-numbers.forEach((button) =>
-    button.addEventListener('click', () =>
-        appendNumber(button.textContent))
-);
+numbers.forEach((button) => {
+    button.addEventListener('click', () => {
+        appendNumber(button.textContent) 
+    })
+});
 
-operators.forEach((button) =>
-    button.addEventListener('click', () =>
-        chooseOperator(button.textContent))
-);
+operators.forEach((button) => {
+    button.addEventListener('click', () => {
+        chooseOperator(button.textContent) 
+    })
+});
 
 clearBtn.addEventListener('click', clear)
 allClearBtn.addEventListener('click', allClear)
