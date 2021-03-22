@@ -53,6 +53,7 @@ button:hover {
     word-break: break-all;
     margin-bottom: 5px;
     border-radius: 15px;
+    font-size: 38px;
 }
 
 .operator {
@@ -75,6 +76,10 @@ button:hover {
     border: 2px solid orange;
 }
 
+.all-clear {
+    grid-column: span 2;
+}
+
 #deleteBtn {
     background: #9c9c9c;
 }
@@ -82,13 +87,4 @@ button:hover {
 #deleteBtn:hover {
     color: red;
     border: 2px solid red;
-}
-
-.previous {
-    font-size: 23px;
-    color: rgba(255, 255, 255, 0.80);
-}
-
-.current {
-    font-size: 36px;
 }
