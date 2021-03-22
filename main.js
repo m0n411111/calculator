@@ -53,14 +53,19 @@ function appendNumber(number) {
 }
 
 function appendDecimal() {
-    if (clearDisplay) resetDisplay();
-    if (display.textContent === '') display.textContent = '0';
-    if (display.textContent.includes('.')) return;
+    if (clearDisplay)
+        resetDisplay();
+    if (display.textContent === '')
+        display.textContent = '0';
+    if (display.textContent.includes('.'))
+        return;
     display.textContent += '.';
 }
 
 function chooseOperator(operator) {
-    if (currentOperator !== null) evaluate();
+    if (currentOperator !== null)
+        evaluate();
+
     firstOperand = display.textContent;
     currentOperator = operator;
     clearDisplay = true;
