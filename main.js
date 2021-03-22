@@ -47,16 +47,23 @@ function operate(operator, a, b) {
 }
 
 function appendNumber(number) {
-    if(display.textContent === '0' || clearDisplay)
-    resetDisplay();
+    if (display.textContent === '0' || clearDisplay)
+        resetDisplay();
     display.textContent += number;
 }
 
 function appendDecimal() {
-    if(clearDisplay) resetDisplay();
-    if(display.textContent === '') display.textContent = '0';
-    if(display.textContent.includes('.')) return;
+    if (clearDisplay) resetDisplay();
+    if (display.textContent === '') display.textContent = '0';
+    if (display.textContent.includes('.')) return;
     display.textContent += '.';
+}
+
+function chooseOperator(operator) {
+    if (currentOperator !== null) evaluate();
+    firstOperand = display.textContent;
+    currentOperator = operator;
+    clearDisplay = true;
 }
 
 function resetDisplay() {
@@ -64,15 +71,8 @@ function resetDisplay() {
     clearDisplay = false;
 }
 
-function chooseOperator(operator) {
-    if(currentOperator !== null) evaluate();
-    firstOperand = display.textContent;
-    currentOperator = operator;
-    clearDisplay = true;
-}
-
 function clear() {
-   display.textContent = display.textContent.toString().slice(0, -1);
+    display.textContent = display.textContent.toString().slice(0, -1);
 }
 
 function allClear() {
@@ -83,8 +83,8 @@ function allClear() {
 }
 
 function evaluate() {
-    if(currentOperator === null || clearDisplay) return;
-    if(currentOperator === '÷' && display.textContent === '0') {
+    if (currentOperator === null || clearDisplay) return;
+    if (currentOperator === '÷' && display.textContent === '0') {
         alert('Error');
         allClear;
         return;
@@ -98,20 +98,17 @@ function roundResult(number) {
     return Math.round(number * 1000) / 1000;
 }
 
-numbers.forEach((button) => 
-   button.addEventListener('click', () =>
+numbers.forEach((button) =>
+    button.addEventListener('click', () =>
         appendNumber(button.textContent))
 );
-    
-operators.forEach((button) => 
+
+operators.forEach((button) =>
     button.addEventListener('click', () =>
         chooseOperator(button.textContent))
 );
 
 clearBtn.addEventListener('click', clear)
-
 allClearBtn.addEventListener('click', allClear)
-
 equals.addEventListener('click', evaluate)
-
 decimal.addEventListener('click', appendDecimal)
