@@ -91,12 +91,8 @@ function evaluate() {
         return;
     }
     secondOperand = display.textContent;
-    display.textContent = roundAnswer(operate(currentOperator, firstOperand, secondOperand));
+    display.textContent = operate(currentOperator, firstOperand, secondOperand).toFixed(2);
     currentOperator = null;
-}
-
-function roundAnswer(number) {
-    return Math.round(number * 100) / 100;
 }
 
 numbers.forEach((button) => {
