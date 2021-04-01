@@ -1,51 +1,51 @@
-const numbers = document.querySelectorAll('.number')
-const operators = document.querySelectorAll('.operator')
-const clearBtn = document.querySelector('.clear')
-const allClearBtn = document.querySelector('.all-clear')
-const equals = document.querySelector('.equals')
-const decimal = document.querySelector('.decimal')
-const display = document.querySelector('.display')
+const operands = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator');
+const clearBtn = document.querySelector('.clear');
+const allClearBtn = document.querySelector('.all-clear');
+const equals = document.querySelector('.equals');
+const decimal = document.querySelector('.decimal');
+const display = document.querySelector('.display');
 
-let firstOperand = ""
-let secondOperand = ""
-let currentOperator = null
-let clearDisplay = false
+let firstOperand = "";
+let secondOperand = "";
+let currentOperator = null;
+let clearDisplay = false;
 
-function add(a, b) {
-    return a + b;
+function add(num1, num2) {
+    return num1 + num2;
 }
 
-function subtract(a, b) {
-    return a - b;
+function subtract(num1, num2) {
+    return num1 - num2;
 }
 
-function multiply(a, b) {
-    return a * b;
+function multiply(num1, num2) {
+    return num1 * num2;
 }
 
-function divide(a, b) {
-    return a / b;
+function divide(num1, num2) {
+    return num1 / num2;
 }
 
-function operate(operator, a, b) {
-    a = Number(a)
-    b = Number(b)
+function operate(operator, num1, num2) {
+    num1 = Number(num1);
+    num2 = Number(num2);
     switch (operator) {
         case '+':
-            return add(a, b);
+            return add(num1, num2);
         case '-':
-            return subtract(a, b);
+            return subtract(num1, num2);
         case 'x':
-            return multiply(a, b);
+            return multiply(num1, num2);
         case '÷':
-            return divide(a, b);
+            return divide(num1, num2);
     }
 }
 
-function appendNumber(number) {
+function appendNumber(num) {
     if (display.textContent === '0' || clearDisplay)
         resetDisplay();
-    display.textContent += number;
+    display.textContent += num;
 }
 
 function appendDecimal() {
@@ -86,28 +86,28 @@ function allClear() {
 function evaluate() {
     if (currentOperator === null || clearDisplay) return;
     if (currentOperator === '÷' && display.textContent === '0') {
-        alert('Error');
+        display.textContent = "Error";
         allClear;
         return;
     }
     secondOperand = display.textContent;
-    display.textContent = operate(currentOperator, firstOperand, secondOperand).toFixed(2);
+    display.textContent = Math.round(operate(currentOperator, firstOperand, secondOperand) * 100) / 100;
     currentOperator = null;
 }
 
-numbers.forEach((button) => {
-    button.addEventListener('click', () => {
-        appendNumber(button.textContent) 
+operands.forEach((number) => {
+    number.addEventListener('click', () => {
+        appendNumber(number.textContent) 
     })
 });
 
-operators.forEach((button) => {
-    button.addEventListener('click', () => {
-        chooseOperator(button.textContent) 
+operators.forEach((operator) => {
+    operator.addEventListener('click', () => {
+        chooseOperator(operator.textContent) 
     })
 });
 
-clearBtn.addEventListener('click', clear)
-allClearBtn.addEventListener('click', allClear)
-equals.addEventListener('click', evaluate)
-decimal.addEventListener('click', appendDecimal)
+clearBtn.addEventListener('click', clear);
+allClearBtn.addEventListener('click', allClear);
+equals.addEventListener('click', evaluate);
+decimal.addEventListener('click', appendDecimal);
